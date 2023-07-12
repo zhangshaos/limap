@@ -2,7 +2,7 @@
 #include "merging/aggregator.h"
 #include "merging/merging.h"
 
-#include <third-party/progressbar.hpp>
+#include <vendor/progressbar.hpp>
 #include <queue>
 #include <iostream>
 #include <algorithm>

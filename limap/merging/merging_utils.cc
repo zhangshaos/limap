@@ -5,7 +5,7 @@
 #include "base/linebase.h"
 #include "base/line_dists.h"
 
-#include <third-party/progressbar.hpp>
+#include <vendor/progressbar.hpp>
 #include <algorithm>
 
 namespace limap {

@@ -9,7 +9,7 @@
 
 namespace py = pybind11;
 
-#include <third-party/half.h>
+#include <vendor/half.h>
 using float16 = half_float::half;
 
 template<typename... Args>

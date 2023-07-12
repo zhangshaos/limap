@@ -2,7 +2,7 @@
 
 #include <VPCluster.h>
 #include <VPSample.h>
-#include <third-party/progressbar.hpp>
+#include <vendor/progressbar.hpp>
 
 namespace limap {
 

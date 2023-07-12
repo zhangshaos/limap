@@ -9,7 +9,7 @@
  */
 
 #include <iostream>
-#include <third-party/progressbar.hpp>
+#include <vendor/progressbar.hpp>
 #include <mutex>
 #include <ctime>
 //

@@ -1,7 +1,7 @@
 #include "triangulation/base_line_triangulator.h"
 #include "triangulation/functions.h"
 
-#include <third-party/progressbar.hpp>
+#include <vendor/progressbar.hpp>
 #include <iostream>
 #include <algorithm>
 

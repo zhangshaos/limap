@@ -1,6 +1,6 @@
 #include "evaluation/point_cloud_evaluator.h"
 
-#include <third-party/progressbar.hpp>
+#include <vendor//progressbar.hpp>
 #include <queue>
 #include <iostream>
 #include <numeric>

@@ -3,7 +3,7 @@
 #include "base/infinite_line.h"
 #include "base/graph.h"
 
-#include <third-party/progressbar.hpp>
+#include <vendor/progressbar.hpp>
 
 namespace limap {
 

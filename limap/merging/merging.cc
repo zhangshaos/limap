@@ -6,7 +6,7 @@
 #include "base/line_dists.h"
 #include "base/graph.h"
 
-#include <third-party/progressbar.hpp>
+#include <vendor//progressbar.hpp>
 #include <set>
 #include <algorithm>
 

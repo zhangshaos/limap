@@ -79,6 +79,7 @@ double infinite_dist_perpendicular(const Line3d& l1, const Line3d& l2) {
         q = (A11 * B2 - A21 * B1) / det;
     }
     double dist = (C0 + Cp * p + Cq * q).norm();
+    return dist;
 }
 
 double infinite_perpendicular_scaleinv_line3dpp(const Line3d& l1, const Line3d& l2) {
@@ -104,6 +105,7 @@ double infinite_perpendicular_scaleinv_line3dpp(const Line3d& l1, const Line3d& 
 
     double distsquared = (Ck * k + Cz).squaredNorm() - pow((Ck * k + Cz).dot(v), 2);
     double dist = sqrt(distsquared);
+    return dist;
 }
 
 double infinite_dist_perpendicular_scaleinv_line3dpp(const Line3d& l1, const Line3d& l2) {
@@ -196,6 +198,12 @@ double compute_distance<Line2d>(const Line2d& l1, const Line2d& l2, const LineDi
         case LineDistType::ENDPOINTS_SCALEINV:
             throw std::runtime_error("Type error. Scale invariance distance is not supported for Line2d.");
     }
+    char msg[512];
+    std::fill(msg, msg+std::size(msg), '\0');
+    sprintf(msg, "%s line-%d func-%s impossible logic!",
+            __FILE__, __LINE__, __func__);
+    throw std::logic_error(msg);
+    return 0;
 }
 
 template<>

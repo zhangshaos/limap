@@ -178,6 +178,12 @@ double JointPoseEstimator::EvaluateModelOnPoint(const CameraPose& pose, int i) c
         else if (getResidualNum(loc_config_.cost_function) == 4)
             return V4D(res[0], res[1], res[2], res[3]).squaredNorm();
     }
+    char msg[512];
+    std::fill(msg, msg+std::size(msg), '\0');
+    sprintf(msg, "%s line-%d func-%s impossible logic!",
+            __FILE__, __LINE__, __func__);
+    throw std::logic_error(msg);
+    return 0;
 }
 
 bool JointPoseEstimator::cheirality_test_point(const V3D& p3d, const CameraPose& pose) const {

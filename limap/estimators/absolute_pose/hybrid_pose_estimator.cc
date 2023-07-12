@@ -59,6 +59,12 @@ double HybridPoseEstimator::EvaluateModelOnPoint(const CameraPose& pose, int t, 
         return JointPoseEstimator::EvaluateModelOnPoint(pose, i);
     else if (t == 1)
         return JointPoseEstimator::EvaluateModelOnPoint(pose, i + num_data_points());
+    char msg[512];
+    std::fill(msg, msg+std::size(msg), '\0');
+    sprintf(msg, "%s line-%d func-%s impossible logic!",
+            __FILE__, __LINE__, __func__);
+    throw std::logic_error(msg);
+    return 0;
 }
 
 } // namespace pose

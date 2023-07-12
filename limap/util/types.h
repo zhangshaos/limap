@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Eigen/Core>
-#include <third-party/half.h>
+#include <vendor/half.h>
 #include <colmap/util/types.h>
 
 #include <pybind11/pybind11.h>
