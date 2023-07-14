@@ -64,6 +64,7 @@ endif()
 # Find packages
 ################################################################################
 find_package(Eigen3 3.3 REQUIRED)
+find_package(Boost REQUIRED COMPONENTS filesystem) # required for COLMAP
 find_package(COLMAP REQUIRED)
 if(${CERES_VERSION} VERSION_LESS "2.2.0")
     # ceres 2.2.0 changes the interface of local parameterization
@@ -83,6 +84,25 @@ set(LIMAP_INCLUDE_DIRS
   ${COLMAP_INCLUDE_DIRS}
 )
 
+if(DEFINED VCPKG_INSTALLED_DIR)
+    # 修正COLMAP_LINK_DIRS =
+    #  D:/CppProjects/vcpkg/installed/x64-windows/share/colmap/../../lib/colmap;
+    #  D:/CppProjects/vcpkg/installed/x64-windows/lib;
+    #  D:/CppProjects/vcpkg/installed/x64-windows/debug/lib.
+    message(STATUS "fixing COLMAP_LINK_DIRS(=${COLMAP_LINK_DIRS})...")
+    list(GET COLMAP_LINK_DIRS 0 dir_0)
+    string(FIND ${dir_0} ${VCPKG_INSTALLED_DIR} pos)
+    if(NOT ${pos} STREQUAL "-1")
+        list(GET COLMAP_LINK_DIRS 1 dir_1)
+        list(GET COLMAP_LINK_DIRS 2 dir_2)
+        if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+            set(COLMAP_LINK_DIRS "${dir_2};${dir_2}/colmap")
+        else()
+            set(COLMAP_LINK_DIRS "${dir_1};${dir_1}/colmap")
+        endif()
+        message(STATUS "fixed COLMAP_LINK_DIRS=${COLMAP_LINK_DIRS}.")
+    endif()
+endif()
 set(LIMAP_LINK_DIRS
   ${COLMAP_LINK_DIRS}
 )
@@ -90,6 +110,7 @@ set(LIMAP_LINK_DIRS
 set(LIMAP_EXTERNAL_LIBRARIES
   ${CERES_LIBRARIES}
   ${FREEIMAGE_LIBRARIES}
+  Boost::filesystem
   ${COLMAP_LIBRARIES}
   ${HDF5_C_LIBRARIES}
   ${Boost_LIBRARIES}

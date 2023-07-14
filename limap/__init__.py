@@ -1,5 +1,6 @@
 import sys
 sys.path.append("build/limap/_limap")
+sys.path.append("lib")
 from _limap import *
 
 from . import base

@@ -1,3 +1,5 @@
+> Hierarchical-Localization 的依赖 pycolmap 不支持WIndows！
+
 # LIMAP 
 <p align="center">
 <img src="./misc/media/supp_qualitative_5x3.png">
@@ -40,6 +42,10 @@ To install the LIMAP Python package:
 ```
 python -m pip install -Ive . 
 ```
+
+> 由于setuptools不支持clang-cl，因此需要手动编译CMake。  
+> pybind11不支持Debug模式。  
+
 To double check if the package is successfully installed:
 ```
 python -c "import limap"
