@@ -4,7 +4,6 @@
 bin/
 lib/
 out/
-third-party/
 
 build/
 dist/
